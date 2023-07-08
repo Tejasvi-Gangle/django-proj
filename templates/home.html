@@ -1,0 +1,42 @@
+{%extends 'base.html'%}
+
+
+
+{%block content%}
+<head>
+    <style>
+
+    </style>
+</head>
+<body>
+
+    <div>
+        <img class="myslides" height="500px" width="100%" src="https://wallpapercave.com/wp/wp5426550.jpg" alt="">
+        <img class="myslides" height="500px" width="100%" src="https://dm0qx8t0i9gc9.cloudfront.net/thumbnails/video/TOEwt0C/videoblocks-cloud-computing-futuristic-holographic-display-hologram-technology_b-zrpkq2g7_thumbnail-1080_11.png" alt="">
+        <img class="myslides" height="500px"  width="100%" src="https://i.ytimg.com/vi/2fNm2ZrGGhw/maxresdefault.jpg" alt="">
+        
+    </div>
+    <script>
+        var slide=0;
+        Slider_img();
+        function Slider_img(){
+            var a=0;
+            var call= document.getElementsByClassName('myslides');
+            for(a=0;a<call.length;a++){
+                call[a].style.display="none"
+            }
+            slide++;
+            if(slide>call.length){
+               // if(slide>slide.length){
+                slide=1
+            }
+            call[slide-1].style.display="block";
+            setTimeout(Slider_img,3000)
+
+        }
+    </script>
+    
+
+
+</body>
+{%endblock%} 

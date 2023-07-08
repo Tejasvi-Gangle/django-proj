@@ -1,0 +1,32 @@
+{%extends 'base.html'%}
+{%block content%}
+
+<head>
+    <style>
+        .form{
+            background-color: rgb(68, 175, 175);
+            padding-top: 25px;
+            padding-bottom: 25px;
+            padding-left: 10px;
+            font-size: large;
+        }
+        .btn{
+            border: 2px solid black;
+
+    }
+        .btn:hover{
+            background-color: darkslategrey;
+            color: white;
+
+    }
+    </style>
+</head>
+
+<form class="form" method="post">
+    <h1>Join us now</h1>
+    {%csrf_token%}
+    {{form.as_p}}
+    <button class="btn" type="submit">Submit</button>
+
+</form>
+{%endblock%}

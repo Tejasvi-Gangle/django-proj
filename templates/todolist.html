@@ -1,0 +1,94 @@
+{% extends 'base.html'%}
+{%block content%}
+
+
+<style>
+	table{
+		width: 100%;
+	}
+th,td,tr{
+border:2px solid gray;
+height: 50px;
+width: 200px;
+text-align: center;}
+
+h3{
+color:gray}
+th{
+color:gray}
+button{
+	border: none;
+	background-color: gray;
+	color: white;
+	border-radius: 20px;
+}
+a{
+	text-decoration: none;
+}
+</style>
+<h3 align="center">All are Your Valueable Feedbacks Here</h3>
+<table align="center" id="table">
+
+  <thead>
+     <tr>
+        <th>Title</th>
+		<th>Description</th>
+		<th>Name</th>
+		<th>Mobile Number</th>
+		<th>Created at</th>
+		<th>Updated at</th>
+		<th>Update/Delete</th>
+     </tr>	 
+  
+  </thead>
+  
+  <tbody>
+  
+  {%for todo in todos%}
+     <tr>
+	   <td>{{todo.title}}</td>
+	   <td>{{todo.description}}</td>
+	   <td>{{todo.name}}</td>
+	   <td>{{todo.mobile}}</td>
+	   <td>{{todo.craeted_at}}</td>
+	   <td>{{todo.updated_at}}</td>
+	   <td>
+	    <a href="{%url 'todo:todoedit' todo.id%}">
+		<button>Update</button></a>
+		
+		<a href="{%url 'todo:tododelete' todo.id%}">
+		<button >Delete</button></a>
+	   
+	   </td>
+	 
+	 
+	 </tr>
+  {%endfor%}
+  </tbody>
+
+</table>
+<br><br>
+<button>
+	<a id="downloadLink" onclick="eportF(this)"> Download Into Excel</a>
+</button>
+
+<script>
+	function eportF(elem){
+		var table=document.getElementById('table');
+		var html=table.outerHTML;
+		//set your html table into url
+		var url='data:application/vnd.ms-excel,'+ escape(html);
+		//setting the elements
+		elem.setAttribute("href",url);
+		//choos ethe name of the file
+		elem.setAttribute("download","export_data.xls");
+		return false;
+
+
+	}
+</script>
+
+
+
+
+{%endblock%}
